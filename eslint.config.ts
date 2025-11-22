@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 import perfectionist from "eslint-plugin-perfectionist";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import reactPlugin from "eslint-plugin-react";
@@ -8,24 +9,15 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 
 const OFF = 0;
 const WARN = 1;
 const ERROR = 2;
-const NO_ACCESS_MODIFIER =
-  "There is no need to limit developer access to properties.";
+const NO_ACCESS_MODIFIER = "There is no need to limit developer access to properties.";
 
 export default [
   {
-    ignores: [
-      "build",
-      "dist",
-      "coverage",
-      "eslint.config.*",
-      "vite.*",
-      "stylelint.config.*",
-    ],
+    ignores: ["build", "dist", "coverage", "eslint.config.*", "vite.*", "stylelint.config.*"],
   },
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
@@ -151,10 +143,7 @@ function jsRules() {
     "prefer-exponentiation-operator": ERROR,
     "no-return-assign": [ERROR, "always"],
     "no-void": [ERROR, { allowAsStatement: true }],
-    "no-param-reassign": [
-      ERROR,
-      { props: true, ignorePropertyModificationsFor: ["state"] },
-    ],
+    "no-param-reassign": [ERROR, { props: true, ignorePropertyModificationsFor: ["state"] }],
     "no-console": [ERROR, { allow: ["warn", "error", "debug"] }],
     "no-sequences": [ERROR, { allowInParentheses: false }],
     "no-else-return": [ERROR, { allowElseIf: false }],
@@ -205,22 +194,17 @@ function jsRules() {
         message: "No PropTypes. Use Typescript instead.",
       },
     ],
-    "prefer-destructuring": [
-      ERROR,
-      { array: false, object: true },
-      { enforceForRenamedProperties: false },
-    ],
+    "prefer-destructuring": [ERROR, { array: false, object: true }, { enforceForRenamedProperties: false }],
     "func-style": [ERROR, "expression", { allowArrowFunctions: true }],
-    "array-callback-return": [
-      ERROR,
-      { allowImplicit: true, checkForEach: true },
-    ],
+    "array-callback-return": [ERROR, { allowImplicit: true, checkForEach: true }],
   };
 }
 
 function reactRules() {
   return {
     "react/button-has-type": ERROR,
+    "react/jsx-curly-brace-presence": OFF,
+    "better-tailwindcss/enforce-consistent-line-wrapping": OFF,
     "react/prop-types": OFF,
     "react/display-name": OFF,
     "react/jsx-uses-react": OFF,
@@ -235,21 +219,11 @@ function reactRules() {
     "react/hook-use-state": [ERROR, { allowDestructuredState: true }],
     "react/jsx-no-duplicate-props": [ERROR, { ignoreCase: true }],
     "react/no-multi-comp": [ERROR, { ignoreStateless: true }],
-    "react/destructuring-assignment": [
-      ERROR,
-      "always",
-      { ignoreClassFields: true, destructureInSignature: "always" },
-    ],
-    "react/jsx-no-leaked-render": [
-      ERROR,
-      { validStrategies: ["coerce", "ternary"] },
-    ],
+    "react/destructuring-assignment": [ERROR, "always", { ignoreClassFields: true, destructureInSignature: "always" }],
+    "react/jsx-no-leaked-render": [ERROR, { validStrategies: ["coerce", "ternary"] }],
     "react/no-unstable-nested-components": [ERROR, { allowAsProps: false }],
     "react/jsx-no-useless-fragment": [ERROR, { allowExpressions: true }],
-    "react/boolean-prop-naming": [
-      "error",
-      { rule: "^(is|has|can|did|will|should)[A-Z]([A-Za-z0-9]?)+" },
-    ],
+    "react/boolean-prop-naming": ["error", { rule: "^(is|has|can|did|will|should)[A-Z]([A-Za-z0-9]?)+" }],
     "react/jsx-filename-extension": [
       ERROR,
       {
@@ -258,32 +232,14 @@ function reactRules() {
         ignoreFilesWithoutCode: true,
       },
     ],
-    "react/function-component-definition": [
-      ERROR,
-      { namedComponents: "arrow-function" },
-    ],
-    "react/jsx-curly-brace-presence": [
-      ERROR,
-      {
-        props: "never",
-        children: "never",
-        propElementValues: "always",
-      },
-    ],
   };
 }
 
 function tsRules() {
   return {
     "@typescript-eslint/no-explicit-any": ERROR,
-    "@typescript-eslint/triple-slash-reference": [
-      ERROR,
-      { lib: "never", path: "never", types: "always" },
-    ],
-    "@typescript-eslint/no-misused-promises": [
-      ERROR,
-      { checksVoidReturn: { attributes: false } },
-    ],
+    "@typescript-eslint/triple-slash-reference": [ERROR, { lib: "never", path: "never", types: "always" }],
+    "@typescript-eslint/no-misused-promises": [ERROR, { checksVoidReturn: { attributes: false } }],
     "@typescript-eslint/prefer-includes": ERROR,
     "@typescript-eslint/no-base-to-string": ERROR,
     "@typescript-eslint/no-dynamic-delete": ERROR,
@@ -302,10 +258,7 @@ function tsRules() {
     "@typescript-eslint/ban-ts-comment": ERROR,
     "@typescript-eslint/only-throw-error": ERROR,
     "@typescript-eslint/array-type": [ERROR, { default: "array-simple" }],
-    "@typescript-eslint/consistent-type-assertions": [
-      ERROR,
-      { assertionStyle: "as", objectLiteralTypeAssertions: "never" },
-    ],
+    "@typescript-eslint/consistent-type-assertions": [ERROR, { assertionStyle: "as", objectLiteralTypeAssertions: "never" }],
     "@typescript-eslint/prefer-nullish-coalescing": [
       ERROR,
       {
@@ -314,10 +267,7 @@ function tsRules() {
         ignoreMixedLogicalExpressions: false,
       },
     ],
-    "@typescript-eslint/restrict-plus-operands": [
-      ERROR,
-      { skipCompoundAssignments: true },
-    ],
+    "@typescript-eslint/restrict-plus-operands": [ERROR, { skipCompoundAssignments: true }],
     "@typescript-eslint/no-redeclare": ERROR,
     "@typescript-eslint/method-signature-style": ERROR,
     "@typescript-eslint/promise-function-async": ERROR,
@@ -325,10 +275,7 @@ function tsRules() {
     "@typescript-eslint/switch-exhaustiveness-check": ERROR,
     "@typescript-eslint/no-confusing-void-expression": ERROR,
     "@typescript-eslint/no-redundant-type-constituents": ERROR,
-    "@typescript-eslint/consistent-type-imports": [
-      ERROR,
-      { prefer: "type-imports", fixStyle: "separate-type-imports" },
-    ],
+    "@typescript-eslint/consistent-type-imports": [ERROR, { prefer: "type-imports", fixStyle: "separate-type-imports" }],
     "@typescript-eslint/consistent-type-exports": OFF,
     "@typescript-eslint/strict-boolean-expressions": [
       ERROR,
@@ -338,10 +285,7 @@ function tsRules() {
         allowNullableObject: false,
       },
     ],
-    "@typescript-eslint/require-array-sort-compare": [
-      ERROR,
-      { ignoreStringArrays: true },
-    ],
+    "@typescript-eslint/require-array-sort-compare": [ERROR, { ignoreStringArrays: true }],
     "@typescript-eslint/no-shadow": [
       ERROR,
       {
@@ -352,10 +296,7 @@ function tsRules() {
       },
     ],
     "@typescript-eslint/return-await": [ERROR, "in-try-catch"],
-    "@typescript-eslint/no-use-before-define": [
-      ERROR,
-      { ignoreTypeReferences: true },
-    ],
+    "@typescript-eslint/no-use-before-define": [ERROR, { ignoreTypeReferences: true }],
     "@typescript-eslint/no-unused-expressions": [
       ERROR,
       {
@@ -458,8 +399,7 @@ function importRules() {
               "@/features/*/**",
               "@/types/*/**",
             ],
-            message:
-              "Direct access to the internal parts of the module is prohibited",
+            message: "Direct access to the internal parts of the module is prohibited",
           },
         ],
       },
@@ -475,21 +415,8 @@ function sortRules() {
       {
         customGroups: {
           key: ["^key$", "^keys$"],
-          id: [
-            "^id$",
-            "^name$",
-            "^testId$",
-            "^data-testid$",
-            "^data-autotest$",
-          ],
-          accessibility: [
-            "^title$",
-            "^alt$",
-            "^placeholder$",
-            "^label$",
-            "^description$",
-            "^fallback$",
-          ],
+          id: ["^id$", "^name$", "^testId$", "^data-testid$", "^data-autotest$"],
+          accessibility: ["^title$", "^alt$", "^placeholder$", "^label$", "^description$", "^fallback$"],
           callback: ["^on.+", "^handle.+"],
           className: ["^className$", "^class$", "^style$"],
           control: ["^asChild$", "^as$"],
@@ -546,14 +473,7 @@ function sortRules() {
           "react",
           ["builtin", "external", "type"],
           ["internal", "internal-type"],
-          [
-            "parent-type",
-            "sibling-type",
-            "index-type",
-            "parent",
-            "sibling",
-            "index",
-          ],
+          ["parent-type", "sibling-type", "index-type", "parent", "sibling", "index"],
           "side-effect",
           "style",
           "object",
@@ -592,17 +512,7 @@ function stylisticRules() {
       ERROR,
       {
         blankLine: "always",
-        prev: [
-          "const",
-          "let",
-          "case",
-          "default",
-          "block",
-          "block-like",
-          "multiline-block-like",
-          "interface",
-          "type",
-        ],
+        prev: ["const", "let", "case", "default", "block", "block-like", "multiline-block-like", "interface", "type"],
         next: "*",
       },
       {
