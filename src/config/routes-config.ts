@@ -1,7 +1,8 @@
 export const Path = {
-  about: "about",
-  card: "/page/:pageId/card/:cardId",
+  createProduct: "/create-product",
+  editProduct: "/edit-product/:id",
   index: "/",
   notFound: "*",
-  page: "/page/:pageId",
+  products: "/products",
+  productsId: "/products/:id",
 } as const;
