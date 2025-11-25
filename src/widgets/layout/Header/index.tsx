@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const location = useLocation();
+  const isOnProducts = location.pathname === "/products";
 
   const isActive = (path: string) =>
     location.pathname === path ? "text-muted-foreground pointer-events-none" : "text-primary hover:opacity-80 transition-colors";
@@ -11,7 +12,7 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex items-center">
-            <Link className="flex flex-shrink-0 items-center gap-2" to="/">
+            <Link className={`flex flex-shrink-0 items-center gap-2 ${isOnProducts ? "pointer-events-none" : ""}`} to="/">
               <span className="text-xl font-bold tracking-tight text-primary">fetcher</span>
             </Link>
           </div>
