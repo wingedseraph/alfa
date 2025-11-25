@@ -1,144 +1,124 @@
-# <p align="center">Template React Vite</p>
+# Alfa
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&labelColor=black&color=3178C6)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&labelColor=000000&color=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&labelColor=black&color=0055FF)
-![Static Badge](https://img.shields.io/badge/Tailwind%20CSS-FFFFFF?style=for-the-badge&logo=Tailwind%20CSS&labelColor=black&color=rgb(56%20189%20248))
-![Static Badge](https://img.shields.io/badge/Lenis-FFFFFF?style=for-the-badge&logo=Lenis&labelColor=black&color=rgb(191%2C%2079%2C%20116))
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&labelColor=black&color=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&labelColor=black&color=646CFF)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&labelColor=black&color=38B2AC)
+![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-EC5990?style=for-the-badge&logo=react-hook-form&labelColor=black&color=EC5990)
+![Zod](https://img.shields.io/badge/Zod-3E63DD?style=for-the-badge&logo=zod&labelColor=black&color=3E63DD)
+![React Router](https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=react-router&labelColor=black&color=CA4245)
+![Zustand](https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=zustand)
 
-![image](https://github.com/bbyc4kes/scroll-parallax/assets/153362892/6904e85a-5eae-435f-949f-ccc3a965f4c3)
+<img width="3770" height="2430" alt="image" src="https://github.com/user-attachments/assets/533dcca9-8b79-4855-9573-5ed41348a321" />
 
-### This project is a parallax scrolling website built using Next.js, Framer Motion, Tailwind CSS, and Lenis for smooth scrolling effects.
+## Stack
 
+- Vite
+- React
+- Typescript
+- Zustand
+- React Hook Form
+- Zod
 
-## Technologies Used
-
-- **Next.js**: A React framework for server-side rendering and static site generation.
-- **Framer Motion**: A library for creating animations in React applications.
-- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **Lenis**: A lightweight library for smooth scrolling.
-
-## Features
-
-- Smooth parallax scrolling animations
-- Advanced CSS for responsive and visually appealing design
-- Performance optimization with server-side rendering and static site generation
-
-## Getting Started
+## Setup
 
 ### Prerequisites
 
-Ensure you have the following installed:
-
-- Node.js (>= 14.x)
-- npm (>= 6.x) or yarn (>= 1.x)
+- Node.js (>= 21.x)
+- pnpm (recommended) or npm
 
 ### Installation
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/{{project}}/{{project}}.git
-    cd {{project}}
-    ```
+
+```bash
+git clone <repository-url>
+cd alfa
+```
 
 2. Install dependencies:
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
 
-### Running the Project
+```bash
+pnpm install
+# or
+npm install
+```
 
-To start the development server, run:
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. Start the development server:
 
-### Building for Production
+```bash
+pnpm dev
+# or
+npm run dev
+```
 
-To build the project for production, run:
-    ```bash
-    npm run build
-    npm run start
-    # or
-    yarn build
-    yarn start
-    ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-### Deployment
+### Build
 
-You can deploy the project using platforms like Vercel, Netlify, or any other static site hosting service.
+Build for production:
 
-## Usage
+```bash
+pnpm build
+# or
+npm run build
+```
 
-### Parallax Scroll Implementation
+Preview production build:
 
-- **Next.js** is used for setting up the project structure and routing.
-- **Framer Motion** is utilized for creating animations. Example usage in components:
-    ```jsx
-    import { motion } from 'framer-motion';
+```bash
+pnpm preview
+# or
+npm run preview
+```
 
-    const ExampleComponent = () => {
-      return (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Your content here
-        </motion.div>
-      );
-    };
-    ```
+### Other Commands
 
-- **Tailwind CSS** is used for styling. Example usage:
-    ```html
-    <div className="p-4 bg-blue-500 text-white">
-      Tailwind CSS Styled Component
-    </div>
-    ```
+```bash
+pnpm lint          # Run ESLint
+pnpm lint:fix      # Fix ESLint errors
+pnpm typecheck     # Type check without emitting
+```
 
-- **Lenis** is used for smooth scrolling:
-    ```jsx
-    import Lenis from '@studio-freight/lenis';
-    import { useEffect } from 'react';
+## API
 
-    const SmoothScroll = () => {
-      useEffect(() => {
-        const lenis = new Lenis({
-          duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        });
+The application uses the [FakeStore API](https://fakestoreapi.com/) for initial product data.
 
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
+### Base URL
 
-        requestAnimationFrame(raf);
-      }, []);
+```
+https://fakestoreapi.com/products
+```
 
-      return null;
-    };
+### Project structure
 
-    export default SmoothScroll;
-    ```
+- **components/** - Reusable UI components (buttons, cards, inputs, etc.)
+- **pages/** - Route-level page components
+- **store/** - Zustand store with slices for products, filters, and fetching
+- **widgets/** - Feature-based composite components (layout, etc.)
+- **config/** - App configuration and constants
+- **schemas/** - Zod validation schemas
 
-## Contributing
+## Screenshots
 
-Contributions are welcome! Please open an issue or submit a pull request.
+### Product Listing
 
-## License
+<img width="3770" height="2430" alt="image" src="https://github.com/user-attachments/assets/533dcca9-8b79-4855-9573-5ed41348a321" />
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+### Product Detail
 
-## Acknowledgements
+<img width="3800" height="1992" alt="image" src="https://github.com/user-attachments/assets/3178cc78-4708-4af5-9000-4f2c537f4172" />
 
-- [Next.js](https://nextjs.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Lenis](https://github.com/studio-freight/lenis)
+### Create/Edit Product
+
+<img width="3770" height="2172" alt="image" src="https://github.com/user-attachments/assets/1ea95b3d-ceae-408e-bd89-f5da52058594" />
+
+### Filter Product
+
+<img width="3800" height="1992" alt="image" src="https://github.com/user-attachments/assets/7b131c5e-5fe0-4804-b8f7-48bd424465b1" />
+<img width="3800" height="1992" alt="image" src="https://github.com/user-attachments/assets/6c3184fc-7f2c-4524-93ab-2146d85f38a5" />
+<img width="3800" height="1992" alt="image" src="https://github.com/user-attachments/assets/330f77e2-be3a-4742-a266-b54dd323d514" />
+
+### Delete Product
+
+<img width="3770" height="2430" alt="image" src="https://github.com/user-attachments/assets/070f1f0a-9f8e-47ca-970f-7cf7a7aec83b" />
