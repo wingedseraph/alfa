@@ -11,6 +11,12 @@
 
 <img width="3770" height="2430" alt="image" src="https://github.com/user-attachments/assets/533dcca9-8b79-4855-9573-5ed41348a321" />
 
+## Deploy
+Deploy: https://wingedseraph.github.io/alfa/
+
+products: https://wingedseraph.github.io/alfa/products
+detailed product: https://wingedseraph.github.io/alfa/products/1
+create product: https://wingedseraph.github.io/alfa/create-product
 ## Stack
 
 - Vite
