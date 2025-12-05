@@ -12,7 +12,7 @@ export default function CategoryBadge({ category, variant = "default" }: Categor
 
   return (
     <div className="mb-4">
-      <span className="inline-block rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold tracking-wide text-accent uppercase">
+      <span className="inline-block rounded-full bg-accent/20 py-1 text-xs font-semibold tracking-wide text-secondary-foreground uppercase">
         {capitalizeFirstLetter(category)}
       </span>
     </div>
